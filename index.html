@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .home {
+            background-image: url('img/bg3.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .menu-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-list .menu-list-items {
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+        .menu-list:hover .menu-list-items {
+    padding: 0.5rem 1rem;
+    text-decoration: underline wavy; 
+    text-shadow: 2px 2px #e67e22; 
+}
+        .menu-list .menu-list-items .links {
+            font-size: large;
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .menu-list-items.active {
+            background-color: #ffcc00;
+        }
+
+        .menu-list-items.active .links {
+            color: white;
+        }
+
+        .welcome {
+            padding: 10%;
+        }
+
+        .welcome p {
+            margin: 0;
+            line-height: 1;
+        }
+
+        .welcome .text {
+            text-align: left;
+            font-size: 5.5rem;
+            color: #fff;
+        }
+
+        .welcome .text1 {
+            text-align: left;
+            font-size: 3.2rem;
+            color: #fff;
+        }
+
+        .welcome .text2 {
+            text-align: left;
+            font-size: 2.1rem;
+            color: #ffcc00;
+        }
+
+        .character {
+            padding: 2%;
+        }
+
+        .character p {
+            margin: 0;
+            line-height: 1;
+        }
+
+        .character .text {
+            text-align: center;
+            font-size: 3rem;
+            color: #1076a9;
+        }
+
+        .character .text2 {
+            text-align: center;
+            font-size: 1rem;
+            color: #020202;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 60%;
+            padding-top: 2%;
+            max-width: 1200px;
+            overflow: hidden;
+            margin: 0 auto;
+            /* Center the carousel */
+        }
+
+        .carousel {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            opacity: 0;
+            transition: all .5s ease-in-out;
+        }
+
+        .card h3 {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            z-index: 9;
+            transition: all .5s ease-in-out;
+            text-align: center;
+        }
+
+        .card:hover h3 {
+            transform: scale(1.2);
+        }
+
+        .card:hover img {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .studio {
+            padding: 2%;
+            background-image: url('img/bg8.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .studio p {
+            margin: 0;
+            line-height: 1;
+        }
+
+        .studio .text {
+            text-align: center;
+            font-size: 3rem;
+            color: #ffcc00;
+        }
+
+        .studio .text2 {
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .news-list {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .news-item {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-item p {
+            position: absolute;
+            align-content: flex-start;
+            bottom: 50px;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+
+
+        .news-item:hover p {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .news-item .poster {
+            width: 80%;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0.9;
+        }
+
+        .news-item:hover .poster {
+            transform: scale(1.05);
+            opacity: 1;
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        .carousel1 {
+            padding-top: 2%;
+            position: relative;
+            margin: auto;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input#slide1:checked~.slides {
+            transform: translateX(0);
+        }
+
+        input#slide2:checked~.slides {
+            transform: translateX(-100%);
+        }
+
+        input#slide3:checked~.slides {
+            transform: translateX(-200%);
+        }
+
+        input#slide4:checked~.slides {
+            transform: translateX(-300%);
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .nav-button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background: #ffe206;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #ddd;
+        }
+
+        .films {
+    background-image: url('img/bg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.films .text {
+    font-size: 4rem;
+    font-style: italic;
+    font-weight: bolder;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.films .text1 {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #fff;
+    padding: 10px;
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .films {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+    .films .text {
+        font-size: 2.5rem;
+        padding: 5px;
+    }
+
+    .films .text1 {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    .video {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .films {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+    .films .text {
+        font-size: 2rem;
+    }
+
+    .films .text1 {
+        font-size: 0.875rem;
+    }
+
+    .video {
+        max-width: 150px;
+    }
+}
+
+        .footer {
+            background-image: url('img/bg3.jpeg');
+            background-position: center;
+            color: #fff;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .footer-heading {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+
+        .footer-text {
+            font-size: 0.9em;
+           
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a i {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .social-icon:hover {
+            color: #e67e22;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="home">
+        <header>
+            <nav class="navbar">
+                <ul class="menu-list">
+                    <li class="menu-list-items active">
+                        <a class="links" href="#home">Home</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#portfolio">Characters</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#about">Parks</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#services">Current</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <img src="img/logo.png" width="120" height="120" alt="Logo">
+            </div>
+            <nav class="navbar">
+                <ul class="menu-list">
+                    <li class="menu-list-items">
+                        <a class="links" href="#home">Classic</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#portfolio">New</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#about">Films</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#services">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="welcome">
+            <p class="text">WELCOME TO</p>
+            <p class="text1"> THE WORLD OF DISNEY</p>
+            <p class="text2"> ALTERNATIVE VERSION OF THE SITE</p>
+        </div>
+    </section>
+    <section id="Characters" class="character">
+        <p class="text">CHARACTERS</p>
+        <p class="text2"> Favourite Heros</p>
+        <div class="carousel-container">
+            <div class="carousel">
+                <button class="prev">❮</button>
+                <div class="carousel-track">
+                    <div class="card"
+                        style="background-image: url('img/bg.jpg'); background-position: center; background-size: cover;">
+                        <h3 class="title">Cinderella</h3>
+                        <img src="/img/cinderella.png" alt="cindrella">
+                    </div>
+                    <div class="card"
+                        style="background-image: url('img/bg1.jpg'); background-position: cover; background-size: cover;">
+                        <h3 class="title">Chief Cat</h3>
+                        <img src="/img/cat.png" alt="cat">
+                    </div>
+                    <div class="card"
+                        style="background-image: url('img/bg4.jpg'); background-position: center; background-size: cover;">
+                        <h3 class="title">Simba</h3>
+                        <img src="/img/simba1.png" alt="simba">
+                    </div>
+                    <div class="card"
+                        style="background-image: url('img/bg5.jpg'); background-position: center; background-size: cover;">
+                        <h3 class="title">Pilot Elephant</h3>
+                        <img src="/img/elephant.png" alt="elephant">
+                    </div>
+                    <div class="card"
+                        style="background-image: url('img/bg6.jpg'); background-position: center; background-size: cover;">
+                        <h3 class="title">Ricky Dog</h3>
+                        <img src="/img/dog.png" alt="dog">
+                    </div>
+                    <div class="card"
+                        style="background-image: url('img/bg7.jpg'); background-position: center; background-size: cover;">
+                        <h3 class="title">Teddy Bear</h3>
+                        <img src="/img/bear.png" alt="bear">
+                    </div>
+
+                </div>
+                <button class="next">❯</button>
+            </div>
+        </div>
+    </section>
+    <section id="studio" class="studio">
+        <p class="text">DISNEYLAND & WALT DISNEY STUDIO </p>
+        <p class="text2">Latest News</p>
+        <div class="news-list">
+            <div class="news-item">
+                <img src="img/news.png" class="poster" alt="30 years of the park">
+                <h4> 30 years of the park </h4>
+                <p>Celebrate 30 years of the park with exciting new events and activities. Join us for special
+                    performances, exclusive merchandise, and more!</p>
+            </div>
+            <div class="news-item">
+                <img src="img/france.png" class="poster" alt="New attractions in France">
+                <h4> New attractions in France </h4>
+                <p>Discover the latest attractions being introduced in France. From thrilling rides to immersive
+                    experiences, there's something new for everyone to enjoy.</p>
+            </div>
+            <div class="news-item">
+                <img src="img/celebration.png" class="poster" alt="Disneyland Paris celebration">
+                <h4>Disneyland Paris celebration</h4>
+                <p>Join the Disneyland Paris celebration with parades, fireworks, and special events. Experience the
+                    magic and create unforgettable memories with family and friends.</p>
+            </div>
+            <div class="news-item">
+                <img src="img/new.png" class="poster" alt="Exciting new event">
+                <h4> Exciting New Event</h4>
+                <p>Don’t miss out on our latest exciting event featuring live music, gourmet food, and interactive
+                    exhibits. A fun-filled day for all ages!</p>
+            </div>
+        </div>
+    </section>
+    <section id="Characters" class="character">
+        <p class="text">CLASSIC</p>
+        <p class="text2">Everyone Favourite Story</p>
+        <div class="carousel1">
+            <input type="radio" name="carousel" id="slide1" checked>
+            <input type="radio" name="carousel" id="slide2">
+            <input type="radio" name="carousel" id="slide3">
+            <input type="radio" name="carousel" id="slide4">
+
+            <div class="slides">
+                <div class="slide" id="s1">
+                    <img src="img/cbg.jpg" alt="Slide 1">
+                </div>
+                <div class="slide" id="s2">
+                    <img src="img/cbg1.jpg" alt="Slide 2">
+                </div>
+                <div class="slide" id="s3">
+                    <img src="img/cbg2.jpg" alt="Slide 3">
+                </div>
+                <div class="slide" id="s4">
+                    <img src="img/cbg4.jpg" alt="Slide 4">
+                </div>
+            </div>
+
+            <div class="navigation">
+                <label for="slide1" class="nav-button">1</label>
+                <label for="slide2" class="nav-button">2</label>
+                <label for="slide3" class="nav-button">3</label>
+                <label for="slide4" class="nav-button">4</label>
+            </div>
+
+
+        </div>
+    </section>
+    <section class="films">
+        <img class="img" src="img/bear.png">
+        <div>
+            <p class="text">Teddy Bear</p>
+            <p class="text1">I am a front-end developer. Don't forget to like, follow, and subscribe to my page,
+                "Website Illustration." Here, you'll find a variety of projects related to front-end development, Canva,
+                Figma, and coding (React, HTML, CSS, Next.js).
+
+                Thank you!</p>
+        </div>
+        <video class="video" controls src="img/bear.mp4" type="video/mp4" />
+
+
+
+
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4 class="footer-heading">About Us</h4>
+                <p class="footer-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">Contact Us</h4>
+                <p class="footer-text">1234 Street Name<br>City, State, 12345<br>Email: info@example.com<br>Phone: (123)
+                    456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const cards = Array.from(track.children);
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+        const cardWidth = cards[0].getBoundingClientRect().width;
+
+        let index = 0;
+
+        function updateCarousel() {
+            const offset = -index * cardWidth;
+            track.style.transform = `translateX(${offset}px)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            if (index < cards.length - 1) {
+                index++;
+                updateCarousel();
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                updateCarousel();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', startAutoSlide);
+
+
+    </script>
+</body>
+
+</html>
