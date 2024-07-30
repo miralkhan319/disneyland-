@@ -37,11 +37,11 @@
             padding: 0.5rem 1rem;
             list-style: none;
         }
+
         .menu-list:hover .menu-list-items {
-    padding: 0.5rem 1rem;
-    text-decoration: underline wavy; 
-    text-shadow: 2px 2px #e67e22; 
-}
+            padding: 0.5rem 1rem;
+        }
+
         .menu-list .menu-list-items .links {
             font-size: large;
             text-decoration: none;
@@ -84,7 +84,7 @@
         }
 
         .character {
-            padding: 2%;
+            padding: 4%;
         }
 
         .character p {
@@ -106,12 +106,10 @@
 
         .carousel-container {
             position: relative;
-            width: 60%;
+            width: 100%;
             padding-top: 2%;
-            max-width: 1200px;
             overflow: hidden;
             margin: 0 auto;
-            /* Center the carousel */
         }
 
         .carousel {
@@ -128,8 +126,8 @@
         }
 
         .card {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             background-color: #fff;
             border: 1px solid #ddd;
             margin: 0 10px;
@@ -194,6 +192,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            justify-items: center;
         }
 
         .studio p {
@@ -209,7 +208,7 @@
 
         .studio .text2 {
             text-align: center;
-            font-size: 1rem;
+            font-size: 2rem;
             color: #fff;
         }
 
@@ -240,6 +239,12 @@
             transition: visibility 0s, opacity 0.5s linear;
         }
 
+        .news-item h4 {
+            font-size: larger;
+            color: #634f03;
+            padding: 0%;
+            margin: 0px;
+        }
 
         .news-item:hover p {
             visibility: visible;
@@ -305,6 +310,82 @@
 
             100% {
                 transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .news-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .studio .text {
+                font-size: 2.5rem;
+            }
+
+            .studio .text2 {
+                font-size: 0.9rem;
+            }
+
+            .news-item {
+                flex: 1 1 45%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .news-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .studio .text {
+                font-size: 2rem;
+            }
+
+            .studio .text2 {
+                font-size: 0.8rem;
+            }
+
+            .news-item {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .studio .text {
+                font-size: 1.5rem;
+            }
+
+            .studio .text2 {
+                font-size: 0.7rem;
+            }
+
+            .news-item {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .news-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .studio .text {
+                font-size: 1.2rem;
+            }
+
+            .studio .text2 {
+                font-size: 0.6rem;
+            }
+
+            .news-item {
+                flex: 1 1 100%;
             }
         }
 
@@ -377,157 +458,161 @@
         }
 
         .films {
-    background-image: url('img/bg2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-}
+            background-image: url('img/bg2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-.films .text {
-    font-size: 4rem;
-    font-style: italic;
-    font-weight: bolder;
-    color: #ffffff;
-    padding: 10px;
-}
+         .text1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #1076a9;
+        }
+        .films .text {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
 
-.films .text1 {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #fff;
-    padding: 10px;
-}
+        
 
-.video {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-    padding: 10px;
-}
+        .video {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            padding: 10px;
+        }
 
-@media (max-width: 768px) {
-    .films {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-}
-    .films .text {
-        font-size: 2.5rem;
-        padding: 5px;
-    }
+        @media (max-width: 768px) {
+            .films {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-    .films .text1 {
-        font-size: 1rem;
-        padding: 5px;
-    }
+            }
 
-    .video {
-        max-width: 200px;
-    }
-}
+            .films .text {
+                font-size: 2.5rem;
+        
+            }
 
-@media (max-width: 480px) {
-    .films {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-}
-    .films .text {
-        font-size: 2rem;
-    }
+           
 
-    .films .text1 {
-        font-size: 0.875rem;
-    }
+            .video {
+                max-width: 200px;
+            }
+        }
 
-    .video {
-        max-width: 150px;
-    }
-}
+        @media (max-width: 480px) {
+            .films {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+            .films .text {
+                font-size: 2rem;
+            }
+
+            .films .text1 {
+                font-size: 0.875rem;
+            }
+
+            .video {
+                max-width: 150px;
+            }
+        }
+       
 
         .footer {
-            background-image: url('img/bg3.jpeg');
-            background-position: center;
-            color: #fff;
-            padding: 40px 20px;
-            font-family: Arial, sans-serif;
-        }
+    height: auto;
+    background: #0d78b7;
+    background-size: cover; 
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
 
-        .footer-section {
-            flex: 1;
-            margin-right: 20px;
-        }
+.footer-section {
+    flex: 1;
+    min-width: 200px; 
+    margin-right: 20px;
+}
 
-        .footer-heading {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            color: #f1c40f;
-        }
+.footer-heading {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #f1c40f;
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 5px;
+}
 
-        .footer-text {
-            font-size: 0.9em;
-           
-        }
+.footer-text {
+    font-size: 1em;
+    line-height: 1.6; 
+}
 
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
 
-        .footer-links li {
-            margin-bottom: 10px;
-        }
+.footer-links li {
+    margin-bottom: 10px;
+}
 
-        .footer-links a i {
-            color: #f1c40f;
-            text-decoration: none;
-        }
+.footer-links a {
+    color: #f1c40f;
+    text-decoration: none;
+}
 
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
+.footer-links a:hover {
+    text-decoration: underline;
+}
 
-        .footer-social {
-            display: flex;
-            gap: 10px;
-        }
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
 
-        .social-icon {
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-        }
+.social-icon {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease; 
+}
 
-        .social-icon:hover {
-            color: #e67e22;
-        }
+.social-icon:hover {
+    color: #e67e22;
+}
 
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px solid #444;
-            padding-top: 10px;
-        }
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px; 
+    border-top: 1px solid #444;
+    padding-top: 15px;
+}
 
-        .footer-bottom p {
-            margin: 0;
-            font-size: 0.8em;
-        }
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9em; /
+}
+
     </style>
 </head>
 
@@ -540,14 +625,12 @@
                         <a class="links" href="#home">Home</a>
                     </li>
                     <li class="menu-list-items">
-                        <a class="links" href="#portfolio">Characters</a>
+                        <a class="links" href="#Character">Characters</a>
                     </li>
                     <li class="menu-list-items">
-                        <a class="links" href="#about">Parks</a>
+                        <a class="links" href="#Story">Classic</a>
                     </li>
-                    <li class="menu-list-items">
-                        <a class="links" href="#services">Current</a>
-                    </li>
+                  
                 </ul>
             </nav>
             <div class="logo">
@@ -555,17 +638,15 @@
             </div>
             <nav class="navbar">
                 <ul class="menu-list">
+                   
                     <li class="menu-list-items">
-                        <a class="links" href="#home">Classic</a>
+                        <a class="links" href="#studio">New</a>
                     </li>
                     <li class="menu-list-items">
-                        <a class="links" href="#portfolio">New</a>
+                        <a class="links" href="#films">Films</a>
                     </li>
                     <li class="menu-list-items">
-                        <a class="links" href="#about">Films</a>
-                    </li>
-                    <li class="menu-list-items">
-                        <a class="links" href="#services">Contact</a>
+                        <a class="links" href="#footer">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -649,7 +730,7 @@
             </div>
         </div>
     </section>
-    <section id="Characters" class="character">
+    <section id="Story" class="character">
         <p class="text">CLASSIC</p>
         <p class="text2">Everyone Favourite Story</p>
         <div class="carousel1">
@@ -683,15 +764,17 @@
 
         </div>
     </section>
-    <section class="films">
+    <section id="films" class="films">
         <img class="img" src="img/bear.png">
-        <div>
-            <p class="text">Teddy Bear</p>
-            <p class="text1">I am a front-end developer. Don't forget to like, follow, and subscribe to my page,
+        <div class="texts">
+            <p class="text1">Films</p>
+            <p class="text">Teddy Bear 
+                <br/>I am a front-end developer. Don't forget to like, follow, and subscribe to my page,
                 "Website Illustration." Here, you'll find a variety of projects related to front-end development, Canva,
                 Figma, and coding (React, HTML, CSS, Next.js).
 
                 Thank you!</p>
+           
         </div>
         <video class="video" controls src="img/bear.mp4" type="video/mp4" />
 
@@ -699,7 +782,7 @@
 
 
     </section>
-    <footer class="footer">
+    <footer id="footer" class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h4 class="footer-heading">About Us</h4>
